@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style2.css' />
+    <link rel='stylesheet' href='/stylesheets/style3.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <div class="login-box">
+      <form action="/insedtsalas/<%= doc._id %>"  method="POST">
+        <div class="user-box">
+          <p>LINKSALA:<input type="text" name="imgsala" value="<%= doc.imgsala %>" /></p>
+        </div>
+        <div class="user-box">  
+          <p>NUMERO:<input type="number" name="numero" value="<%= doc.numero %>" /></p>
+        </div>
+        <div class="user-box">  
+          <p>CAPACIDADE<input type="number" name="capacidade" value="<%= doc.capacidade %>" /></p>
+        </div>
+        <div class="user-box">  
+          <p>DESCRICAO:<input type="text" name="descricao" value="<%= doc.descricao %>" /></p>
+        </div>
+        <div class="user-box">  
+          <p>VALOR:<input type="number" name="valor" value="<%= doc.valor %>" /></p>
+        </div>
+        <div class="user-box">  
+          <button type="submit" value="Salvar">ATUALIZAR</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

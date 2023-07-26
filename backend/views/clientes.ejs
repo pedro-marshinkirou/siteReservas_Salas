@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style2.css' />
+    <link rel='stylesheet' href='/stylesheets/style3.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <div class="login-box">
+      <form action="/insclientes" method="post" role="form">
+          <div class="row">
+              <div class="user-box">
+                  <input type="number" name="cpf" placeholder="cpf" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                  <input type="text" name="nome" placeholder="nome" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                <input type="number" name="cep" placeholder="cep" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                <input type="text" name="email" placeholder="email" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                  <button type="submit" class="btn btn-default">Incluir</button>
+              </div>
+          </div>
+      </form>
+    </div>
+    <div class="tbl-header">
+      <table class="table table-bordered table-striped">
+        <thead><tr>
+          <th>CPF</th>
+          <th>NOME</th>
+          <th>CEP</th>
+          <th>EMAIL</th>
+          <th>EXCLUIR</th>
+        </tr>
+        </thead>
+      </table>
+    </div>
+        
+    <div class="tbl-content">
+      <table>
+        <tbody>
+            <% clientes.forEach(function(cliente, index) { %>
+              <tr>
+                <td><a href="/edtclientes/<%= cliente._id %>">
+                  <%- cliente.cpf %>
+                </a></td>
+                <td><%- cliente.nome %></td>
+                <td><%- cliente.cep %></td> 
+                <td><%- cliente.email %></td>  
+                <td><a href="/delclientes/delete/<%= cliente._id %>" 
+                  onclick="return confirm('Tem certeza que deseja excluir?');">
+                  X
+                </a></td>        
+              </tr>
+            <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <a href="index">MENU</a>
+    </div>
+  </body>
+</html>

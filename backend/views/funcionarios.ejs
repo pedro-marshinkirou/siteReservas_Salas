@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style2.css' />
+    <link rel='stylesheet' href='/stylesheets/style3.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    
+    <div class="login-box">
+      <form action="/insfuncionarios" method="post" role="form">
+          <div class="row">
+              <div class="user-box">
+                  <input type="number" name="cpf" placeholder="cpf" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                  <input type="text" name="nome" placeholder="nome" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                  <input type="number" name="cep" placeholder="cep" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                <input type="text" name="email" placeholder="email" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                <input type="number" name="telefone" placeholder="telefone" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                <input type="text" name="funcao" placeholder="funcao" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                  <button type="submit" class="btn btn-default">Incluir</button>
+              </div>
+          </div>
+      </form>
+    </div>
+    <div class="tbl-header">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>CPF</th>
+            <th>NOME</th>
+            <th>CEP</th>
+            <th>EMAIL</th>
+            <th>FONE</th>
+            <th>FUNCAO</th>
+            <th>EXCLUIR</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    
+    <div class="tbl-content">
+      <table>
+        <tbody>
+            <% funcionarios.forEach(function(funcionario, index) { %>
+              <tr>
+                <td><a href="/edtfuncionarios/<%= funcionario._id %>">
+                  <%- funcionario.cpf %>
+                </a></td>
+                <td><%- funcionario.nome %></td>
+                <td><%- funcionario.cep %></td>
+                <td><%- funcionario.email %></td>
+                <td><%- funcionario.telefone %></td>
+                <td><%- funcionario.funcao %></td>
+                <td><a href="/delfuncionarios/delete/<%= funcionario._id %>" 
+                  onclick="return confirm('Tem certeza que deseja excluir?');">
+                  X
+                </a></td>                 
+              </tr>
+            <% }) %>
+        </tbody>
+    </table>
+  </div>
+  <div>
+    <a href="index">MENU</a>
+  </div>
+  </body>
+</html>

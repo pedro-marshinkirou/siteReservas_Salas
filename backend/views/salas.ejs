@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style2.css' />
+    <link rel='stylesheet' href='/stylesheets/style3.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    
+    <div class="login-box">
+      <form action="/inssalas" method="post" role="form">
+          <div class="row">
+              <div class="user-box">
+                  <input type="text" name="imgsala" placeholder="linksala" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                  <input type="number" name="numero" placeholder="numero" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                  <input type="number" name="capacidade" placeholder="capacidade" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                <input type="text" name="descricao" placeholder="descricao" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                <input type="number" name="valor" placeholder="valor" class="form-control" required/>
+              </div>
+              <div class="user-box">
+                  <button type="submit" class="btn btn-default">Incluir</button>
+              </div>
+          </div>
+      </form>
+    </div>
+    <div class="tbl-header">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>LINKSALA</th>
+            <th>NUMERO</th>
+            <th>CAPACIDADE</th>
+            <th>DESCRICAO</th>
+            <th>VALOR</th>
+            <th>EXCLUIR</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    
+    <div class="tbl-content">
+      <table>
+        <tbody>
+            <% salas.forEach(function(sala, index) { %>
+              <tr>
+                <td><a href="/edtsalas/<%= sala._id %>">
+                  <%- sala.imgsala %>
+                </a></td>
+                <td><%- sala.numero %></td>
+                <td><%- sala.capacidade %></td>
+                <td><%- sala.descricao %></td>
+                <td><%- sala.valor %></td>
+                <td><a href="/delsalas/delete/<%= sala._id %>" 
+                  onclick="return confirm('Tem certeza que deseja excluir?');">
+                  X
+                </a></td>                 
+              </tr>
+            <% }) %>
+        </tbody>  
+      </table>
+    </div>
+    <div>
+      <a href="index">MENU</a>
+    </div>
+  </body>
+</html>
